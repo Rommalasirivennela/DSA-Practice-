@@ -1,0 +1,19 @@
+# Day01 - Two Sum - LeetCode #1
+# Date: 06 Sep 2026
+# link: https://leetcode.com/problems/two-sum/submissions/2132062050
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        seen = {}
+        for i, num in enumerate(nums):
+            need = target - num
+            if need in seen:
+                return [seen[need], i]
+            seen[num] = i
+        return []
+            
+        
