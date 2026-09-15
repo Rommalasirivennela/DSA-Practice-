@@ -1,0 +1,29 @@
+day11-DSA journey in leetcode array/Search in Rotated Sorted array 
+
+https://leetcode.com/problems/search-in-rotated-sorted-array/submissions/2142923648
+
+class Solution:
+    def search(self, nums, target):
+        l = 0
+        r = len(nums) - 1
+
+        while l <= r:
+            m = (l + r) // 2
+
+            if nums[m] == target:
+                return m
+
+            # Left part is sorted
+            if nums[l] <= nums[m]:
+                if nums[l] <= target < nums[m]:
+                    r = m - 1
+                else:
+                    l = m + 1
+            # Right part is sorted
+            else:
+                if nums[m] < target <= nums[r]:
+                    l = m + 1
+                else:
+                    r = m - 1
+
+        return -1
